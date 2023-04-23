@@ -27,4 +27,18 @@ function encrypt(text) {
 	return encryptedText
 }
 
+function decrypt(text) {
+
+	let decryptedText = text
+
+	decryptedText = decryptedText.replace("enter", "e")
+	decryptedText = decryptedText.replace("imes", "i")
+	decryptedText = decryptedText.replace("ai", "a")
+	decryptedText = decryptedText.replace("ober", "o")
+	decryptedText = decryptedText.replace("ufat", "u")
+
+	return decryptedText
+}
+
 console.log(encrypt("gato"))
+console.log(decrypt("gaitober"))
