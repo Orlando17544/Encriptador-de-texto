@@ -8,28 +8,81 @@
 		<style>
 			html {
 				background: #F3F5FC;
-			}
+			},
 			body {
 				font-family: Arial, Helvetica, sans-serif;
 			}
 		</style>
 	</head>
 	<body>
+		<script>
+			function encrypt() {
+
+				const text = document.getElementById("encryptArea").value
+
+				let encryptedText = ""
+
+				for (let letter of text) {
+					switch (letter) {
+						case "e":
+							encryptedText += "enter"
+							break
+						case "i":
+							encryptedText += "imes"
+							break
+						case "a":
+							encryptedText += "ai"
+							break
+						case "o":
+							encryptedText += "ober"
+							break
+						case "u":
+							encryptedText += "ufat"
+							break
+						default:
+							encryptedText += letter
+					}
+				}
+
+				console.log(encryptedText)
+
+				document.getElementById("rightPanelEmpty").style.display = "none"
+				document.getElementById("rightPanelFull").style.display = "flex"
+
+				document.getElementById("displayArea").value = encryptedText
+			}
+
+			function decrypt() {
+
+				let decryptedText = document.getElementById("displayArea").value
+
+				decryptedText = decryptedText.replace("enter", "e")
+				decryptedText = decryptedText.replace("imes", "i")
+				decryptedText = decryptedText.replace("ai", "a")
+				decryptedText = decryptedText.replace("ober", "o")
+				decryptedText = decryptedText.replace("ufat", "u")
+
+				return decryptedText
+			}
+		</script>
 		<div style="display: flex; flex-direction: row; justify-content: space-around; width:100%; height: 100%;">
 			<div style="display: flex; flex-direction: column; justify-content: space-around; width: 65%; height: 100%;">
 				<img style="width: 100px; height: auto;" src="./logo.png">
 
-				<textarea name="textarea" rows="10" style="font-size: 20px; background: #F3F5FC; width: 100%; color: #0A3871;">Ingrese el texto aqui</textarea>
+				<textarea name="textarea" rows="10" id="encryptArea" style="font-size: 20px; background: #F3F5FC; width: 100%; color: #0A3871;">Ingrese el texto aqui</textarea>
 				<p style="font-size: 10px;">Solo letras minúsculas y acentos</p>
 				<div style="display: flex; justify-content: space-around;">
-					<button type="button" style="border: 2px solid #0A3871; border-radius: 15px; background: #0A3871; padding: 15px; color: white; margin-right: 5px;">Encriptar</button>
-					<button type="button" style="border: 2px solid #0A3871; border-radius: 15px; background: #D8DFE8; padding: 15px; color: #0A3871; margin-left: 5px;">Desencriptar</button>
+					<button type="button" onclick="encrypt()" style="border: 2px solid #0A3871; border-radius: 15px; background: #0A3871; padding: 15px; color: white; margin-right: 5px;">Encriptar</button>
+					<button type="button" onclick="decrypt()" style="border: 2px solid #0A3871; border-radius: 15px; background: #D8DFE8; padding: 15px; color: #0A3871; margin-left: 5px;">Desencriptar</button>
 				</div>
 			</div>
-			<div style="display: flex; flex-direction: column; justify-content: space-around; width: 30%; background: #FFFFFF; border-radius: 30px; height: 100%;">
+			<div id="rightPanelEmpty" style="display: flex; flex-direction: column; justify-content: space-around; width: 30%; background: #FFFFFF; border-radius: 30px; height: 100%;">
 				<img style="display: block; margin-left: auto; margin-right: auto;" src="./muñeco.png">
 				<p style="text-align: center;"><strong>Ningún mensaje fue encontrado</strong></p>
 				<p style="text-align: center;">Ingresa el texto que desees encriptar o desencriptar</p>
+			</div>
+			<div id="rightPanelFull" style="display: none; flex-direction: column; justify-content: space-around; width: 30%; background: #FFFFFF; border-radius: 30px; height: 100%;">
+				<textarea name="textarea" rows="10" id="displayArea" style="font-size: 20px; background: #F3F5FC; width: 100%; color: #0A3871;"></textarea>
 			</div>
 		</div>
 	</body>
